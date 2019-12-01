@@ -1,0 +1,3 @@
+Beast::Yellow Lab::10
+Simon ::German Shepard::5
+Carlie::Pit Bull::8

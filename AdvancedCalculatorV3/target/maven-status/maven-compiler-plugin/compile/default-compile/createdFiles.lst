@@ -1,0 +1,9 @@
+com\mycompany\advancedcalculatorv3\UserIO\UserIO.class
+com\mycompany\advancedcalculatorv3\Utils\IntUtils.class
+com\mycompany\advancedcalculatorv3\App\Application.class
+com\mycompany\advancedcalculatorv3\Objects\Calculator.class
+com\mycompany\advancedcalculatorv3\Utils\ArrayUtils.class
+com\mycompany\advancedcalculatorv3\Utils\CharUtils.class
+com\mycompany\advancedcalculatorv3\UserIO\UserIOImplementation.class
+com\mycompany\advancedcalculatorv3\Utils\StringUtils.class
+com\mycompany\advancedcalculatorv3\Program.class
