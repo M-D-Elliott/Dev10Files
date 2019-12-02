@@ -1,0 +1,19 @@
+common abstractions in class design:
+
+interfaces and abstract classes.
+
+liskov substitution principle. -- if you ever have to reach inside to confirm implementation, you have violated the liskov sub principle and lost
+all benefits of that abstraction.
+
+third assessment assigned by friday. Due end of week next week.
+
+Will not be doing snow days like on wednesday.
+
+Simple game:
+10x10 grid.
+
+randomly place a mouse on the grid.
+randomly place a cheese on the grid.
+movement keys to move mouse left down up right.
+win if move to the same place as the cheese.
+lose if move off the edge of the board.

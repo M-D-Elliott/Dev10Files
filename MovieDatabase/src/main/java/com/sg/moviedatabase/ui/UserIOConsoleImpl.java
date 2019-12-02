@@ -1,10 +1,11 @@
-package com.sg.moviedatabase2.ui;
+package com.sg.moviedatabase.ui;
 
 import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO{
 
     private final Scanner sc;
+    private static final String BANNER = "===";
 
     public UserIOConsoleImpl() {
         sc = new Scanner(System.in);
@@ -14,7 +15,12 @@ public class UserIOConsoleImpl implements UserIO{
     public void print(String message) {
         System.out.println(message);
     }
-
+    
+    @Override
+    public void print(int value){
+        System.out.println(value);
+    }
+    
     @Override
     public double readDouble(String prompt) {
         System.out.println(prompt + " ");
@@ -102,19 +108,44 @@ public class UserIOConsoleImpl implements UserIO{
     public boolean quit(String keyWord) {
         return (keyWord.equalsIgnoreCase("quit") || keyWord.equalsIgnoreCase("q"));
     }
+    
+    @Override
+    public String encaseInBanner(String inner) {
+        return encaseInBanner(inner, BANNER);
+    }
+    
+    @Override
+    public String encaseInBanner(String inner, String banner) {
+        return encaseInBanner(true, inner, banner);
+    }
+    
+    @Override
+    public String encaseInBanner(boolean whiteSpace, String inner, String banner) {
+        return encaseInBanner(true, whiteSpace, inner, banner);
+    }
 
     @Override
-    public void encaseInBanner(String... inner) {
+    public String encaseInBanner(boolean print, boolean whiteSpace, String inner, String banner) {
+        String spacing = (whiteSpace) ? " " : "";
+        String retValue = banner + spacing + inner + spacing + banner;
+        if(print){
+            System.out.println(retValue);
+        }
+        return retValue;
+    }
+
+    @Override
+    public String multilineBanner(String... inner) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void encaseInBanner(boolean print, String... inner) {
+    public String multilineBanner(boolean print, String... inner) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void encaseInBanner(boolean print, boolean whiteSpace, String... inner) {
+    public String multilineBanner(boolean print, boolean whiteSpace, String... inner) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

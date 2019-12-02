@@ -1,9 +1,11 @@
 
-package com.sg.moviedatabase2.ui;
+package com.sg.moviedatabase.ui;
 
 public interface UserIO {
 
     void print(String message);
+    
+    void print(int value);
 
     double readDouble(String prompt);
 
@@ -27,9 +29,17 @@ public interface UserIO {
     
     boolean quit(String keyWord);
     
-    void encaseInBanner(String... inner);
+    String encaseInBanner(String inner);
     
-    void encaseInBanner(boolean print, String... inner);
+    String encaseInBanner(String inner, String banner);
     
-    void encaseInBanner(boolean print, boolean whiteSpace, String... inner);
+    String encaseInBanner(boolean whiteSpace, String inner, String banner);
+    
+    String encaseInBanner(boolean print, boolean whiteSpace, String inner, String banner);
+    
+    String multilineBanner(String... inner);
+    
+    String multilineBanner(boolean print, String... inner);
+    
+    String multilineBanner(boolean print, boolean whiteSpace, String... inner);
 }
