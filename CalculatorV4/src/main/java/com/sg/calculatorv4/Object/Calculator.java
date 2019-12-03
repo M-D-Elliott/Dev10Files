@@ -1,8 +1,8 @@
-package com.mycompany.advancedcalculatorv3.Objects;
+package com.sg.calculatorv4.Object;
 
-import com.mycompany.advancedcalculatorv3.Utils.ArrayUtils;
-import com.mycompany.advancedcalculatorv3.Utils.CharUtils;
-import com.mycompany.advancedcalculatorv3.Utils.StringUtils;
+import com.sg.calculatorv4.Utils.ArrayUtils;
+import com.sg.calculatorv4.Utils.CharUtils;
+import com.sg.calculatorv4.Utils.StringUtils;
 
 public class Calculator {
 

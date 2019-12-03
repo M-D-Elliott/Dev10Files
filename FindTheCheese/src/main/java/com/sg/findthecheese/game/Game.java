@@ -112,13 +112,15 @@ public class Game {
                 break;
             }
             print();
-            playerMove();
-            goblinMove();
-            cheeseMove();
+            boolean playerMoveValid = playerMove();
+            if(playerMoveValid){
+                goblinMove();
+                cheeseMove();
+            }
         }
     }
     
-    private void playerMove(){
+    private boolean playerMove(){
         System.out.println("Move [WASD]:");
         switch(sc.nextLine()){
             case "W":
@@ -135,8 +137,9 @@ public class Game {
                 break;
             default:
                 System.out.println("Invalid entry.");
-                break;
+                return false;
         }
+        return true;
     }
     
     private void goblinMove(){

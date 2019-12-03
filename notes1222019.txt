@@ -17,3 +17,82 @@ randomly place a cheese on the grid.
 movement keys to move mouse left down up right.
 win if move to the same place as the cheese.
 lose if move off the edge of the board.
+
+
+more notes:
+
+pillars of OOP
+-polymorphism
+-inheritance
+(Brittle, why? Makes it harder to loosely couple with inheritance)
+-encapsulation
+-abstraction -- segregation of responsibilities, separation of concerns
+(abstracting some of the details, don't need to think about.)
+
+
+racing car:
+accelerate; doesn't allow over or under acceleration,
+cannot see details of how but still works.
+
+Marcus extends human,
+Corbin extends human.
+
+instructor extends human,
+marcus extends human,
+corbin extends instructor.
+
+Prefer composition over inheritance. More flexible
+marcus is human with dev10er record.
+corbin is human with instructor record, dev10er record.
+
+<b>Dependency injection</b>
+gonna use dep inj framework next week.
+
+App: video game tracker.
+Sqlite can only be used on machine that runs program.
+so port sqlite data ---> postgresql.
+if hard-coded sqlite talking then no easy way to swap component.
+This is tight coupling.
+
+loose coupling of backend very useful for many reasons.
+can change mind of vendor and can test in many different ways.
+
+Models are not the same as DTOs.
+What we are using are not DTOs
+all dtos are models; not all models are dtos.
+Model <---- extends ---- DTO.
+
+we are doing constructor injection:
+dependent receives dependency via constructor.
+
+data cannot know about ui, vice versa.
+next week we will find out about layer in between data and ui.
+
+uml --- unified modeling language.
+: set of tools to think about abstractions.
+
+sequence diagram: 
+
+actors, view component, controller, dao.
+timeline
+|
+|
+|
+v
+
+display menu, this stops
+then view becomes active.
+view returns item.
+controller becomes active again.
+controller talks to view.
+student returns to controller.
+controller becomes active.
+sends student to dao.
+dao becomes active, hopefully returns success.
+sends success back to controller, 
+which communicates to view.
+
+<b>Only one component can be active at a time, as it takes the main thread.</b>
+
+our marshalling/unmarshalling is not protected against different languages, etc.
+will break.
