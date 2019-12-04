@@ -1,30 +1,29 @@
 
 package com.sg.moviedatabase.dto;
 
-enum mpaaRating {
-    G,
-    PG,
-    PG13,
-    R,
-    NC17,
-}
+//enum mpaaRating {
+//    G,
+//    PG,
+//    PG13,
+//    R,
+//    NC17,
+//}
 
 public class Movie {
     private String Title;
     private String releaseDate;
-    private int rating;
+    private String rating;
     private String directorName;
     private String studioName;
     private String userRating;
     
     private int id;
+    
+    private static int totalMovies;
 
     public Movie() {
-        
-    }
-    
-    public Movie(int id) {
-        this.id = id;
+        totalMovies++;
+        this.id = totalMovies;
     }
 
     public String getTitle() {
@@ -43,11 +42,11 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
@@ -77,5 +76,9 @@ public class Movie {
 
     public int getId() {
         return id;
+    }
+    
+    public static void resetTotal(){
+        totalMovies = 0;
     }
 }

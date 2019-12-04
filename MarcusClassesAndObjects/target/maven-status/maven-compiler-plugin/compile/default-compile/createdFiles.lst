@@ -1,4 +1,6 @@
 exercises1\GridHouse.class
+test\Trainable.class
+test\Dog.class
 Utils\ListUtils.class
 exercises2\AdvancedCalcApp.class
 exercises2\SimpleCalculator.class
@@ -18,6 +20,7 @@ lesson\Dog.class
 exercises3\Rectangle.class
 Challenges\CardGame\KyleCard.class
 exercises1\IceCreamControlSystem.class
+test\Husky.class
 Utils\RandomUtils.class
 Utils\IntUtils.class
 exercises3\Triangle.class
@@ -30,6 +33,8 @@ exercises1\AirplaneSimulator.class
 exercises3\Shape.class
 lesson\Notes1127.class
 Challenges\CardGame\Card.class
+test\Huggable.class
+test\test.class
 exercises2\AdvancedCalcV2.class
 Utils\CharUtils.class
 Challenges\CardGame\App.class

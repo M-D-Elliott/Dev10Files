@@ -7,9 +7,6 @@ public class Application {
     private Calculator calculator;
     
     private boolean continueRunning;
-    
-    private int operationId = 0;
-            
     private boolean acceptingUserInput;
     
     private UserIOImplementation io;
@@ -18,8 +15,7 @@ public class Application {
         continueRunning = true;
         
         io = new UserIOImplementation();
-        this.calculator = new Calculator(10000);
-        this.acceptingUserInput = true;
+        this.calculator = new Calculator();
     }
     
     public void start(){
@@ -42,11 +38,11 @@ public class Application {
                 expression = getAndInterpretUserInput(": "); 
             }
             
-            calculator.setInput(expression);
-            
-            calculator.calculate();
-            
-            calculator.printOut();
+            if(continueRunning){
+                calculator.setInput(expression);
+                calculator.calculate();
+                calculator.printOut();
+            }
         }
     }
 

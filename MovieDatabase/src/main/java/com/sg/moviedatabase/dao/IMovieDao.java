@@ -4,7 +4,7 @@ package com.sg.moviedatabase.dao;
 import com.sg.moviedatabase.dto.Movie;
 import java.util.List;
 
-public interface MoviesDao {
+public interface IMovieDao {
          
     /**
      * Adds the given Movie to the database and associates it with the given 

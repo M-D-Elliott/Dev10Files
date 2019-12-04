@@ -1,8 +1,7 @@
 package com.mycompany.marcusclassesandobjects;
 
-import exercises2.SimpleCalcApp;
 import java.io.FileNotFoundException;
-import lesson.DataMarshalUnmarshall;
+import test.test;
 
 public class Program {
     public static void main(String[] args) throws FileNotFoundException {
@@ -17,5 +16,6 @@ public class Program {
 
 //        ***Lessons***
 //        new DataMarshalUnmarshall().run();
+        new test().run();
     }
 }

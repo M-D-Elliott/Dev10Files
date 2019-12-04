@@ -2,17 +2,17 @@
 package com.sg.moviedatabase.controllers;
 
 import com.sg.moviedatabase.dao.MovieDaoException;
-import com.sg.moviedatabase.dao.MoviesDao;
 import com.sg.moviedatabase.dto.Movie;
 import com.sg.moviedatabase.ui.MoviesView;
 import java.util.List;
+import com.sg.moviedatabase.dao.IMovieDao;
 
 public class MoviesController {
     
     MoviesView view;
-    MoviesDao dao;
+    IMovieDao dao;
 
-    public MoviesController(MoviesDao dao, MoviesView view) {
+    public MoviesController(IMovieDao dao, MoviesView view) {
         this.dao = dao;
         this.view = view;
     }
@@ -26,20 +26,21 @@ public class MoviesController {
                 menuSelection = getMenuSelection();
 
                 switch (menuSelection) {
-                    case 1:
-                        listMovies();
+                    case 0:
+                        keepGoing = false;
                         break;
-                    case 2:
+                    case 1:
                         createMovie();
                         break;
-                    case 3:
+                    case 2:
                         viewMovie();
                         break;
-                    case 4:
+                    case 3:
                         removeMovie();
                         break;
-                    case 5:
-                        keepGoing = false;
+                    case 4:
+                        System.out.println("list");
+                        listMovies();
                         break;
                     default:
                         unknownCommand();
