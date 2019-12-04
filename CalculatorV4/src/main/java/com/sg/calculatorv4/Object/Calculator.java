@@ -91,6 +91,7 @@ public class Calculator {
                         totalDigits++;
                         totalDecimals = (isDecimalInThisExpression) ? totalDecimals + 1 : 0;
                     }
+                    break;
             }
             index++;
         }
