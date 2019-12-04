@@ -90,6 +90,8 @@ public class Calculator {
                         }
                         totalDigits++;
                         totalDecimals = (isDecimalInThisExpression) ? totalDecimals + 1 : 0;
+                    } else {
+                        callError("Unacceptable value");
                     }
                     break;
             }
@@ -165,7 +167,7 @@ public class Calculator {
     private boolean callError(String message) {
         isError = true;
         clearBoth();
-        out = message + " Error";
+        out = message + " error";
         return true;
     }
     
@@ -176,10 +178,11 @@ public class Calculator {
 
         String tryOut = "";
         if (input.length() >= 0) {
+            int result = interpretExpression(input.toCharArray());
             if(isDecimalInOut){
-                tryOut = Double.toString(interpretExpression(input.toCharArray()));
+                tryOut = Double.toString(result);
             } else {
-                tryOut = Integer.toString(interpretExpression(input.toCharArray()));
+                tryOut = Integer.toString(result);
             }
         }
 
