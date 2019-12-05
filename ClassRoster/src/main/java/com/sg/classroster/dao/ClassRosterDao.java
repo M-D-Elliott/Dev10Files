@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,37 +16,38 @@ import java.util.Scanner;
 
 public class ClassRosterDao implements IClassRosterDao {
 
-    private Map<String, Student> students = new HashMap<>();
     public static final String ROSTER_FILE = "roster.txt";
     public static final String DELIMITER = "::";
     
     @Override
     public Student addStudent(String studentId, Student student) 
      throws ClassRosterPersistenceException {
-        loadRoster();
+        Map<String, Student> students = loadRoster();
         Student newStudent = students.put(studentId, student);
-        writeRoster();
+        writeRoster(students.values());
         return newStudent;
     }
 
     @Override
     public List<Student> getAllStudents() 
      throws ClassRosterPersistenceException {
-        loadRoster();
+        Map<String, Student> students = loadRoster();
         return new ArrayList(students.values());
     }
 
     @Override
-    public Student getStudent(String studentId) {
+    public Student getStudent(String studentId)
+     throws ClassRosterPersistenceException {
+        Map<String, Student> students = loadRoster();
         return students.get(studentId);
     }
 
     @Override
     public Student removeStudent(String studentId) 
      throws ClassRosterPersistenceException {
-        loadRoster();
+        Map<String, Student> students = loadRoster();
         Student removedStudent = students.remove(studentId);
-        writeRoster();
+        writeRoster(students.values());
         return removedStudent;
     }
 
@@ -88,9 +90,9 @@ public class ClassRosterDao implements IClassRosterDao {
         return studentFromFile;
     }
 
-    private void loadRoster() throws ClassRosterPersistenceException {
+    private Map<String, Student> loadRoster() throws ClassRosterPersistenceException {
         Scanner scanner;
-
+        Map<String, Student> students = new HashMap<>();
         try {
             // Create Scanner for reading the file
             scanner = new Scanner(
@@ -119,6 +121,7 @@ public class ClassRosterDao implements IClassRosterDao {
         }
         // close scanner
         scanner.close();
+        return students;
     }
     
     private String marshallStudent(Student aStudent){
@@ -153,7 +156,7 @@ public class ClassRosterDao implements IClassRosterDao {
     * 
     * @throws ClassRosterPersistenceException if an error occurs writing to the file
     */
-   private void writeRoster() throws ClassRosterPersistenceException {
+   private void writeRoster(Collection<Student> studentList) throws ClassRosterPersistenceException {
        // NOTE FOR APPRENTICES: We are not handling the IOException - but
        // we are translating it to an application specific exception and 
        // then simple throwing it (i.e. 'reporting' it) to the code that
@@ -174,7 +177,6 @@ public class ClassRosterDao implements IClassRosterDao {
        // already created a method that gets a List of Students so
        // we'll reuse it.
        String studentAsText;
-       List<Student> studentList = this.getAllStudents();
        for (Student currentStudent : studentList) {
            // turn a Student into a String
            studentAsText = marshallStudent(currentStudent);
