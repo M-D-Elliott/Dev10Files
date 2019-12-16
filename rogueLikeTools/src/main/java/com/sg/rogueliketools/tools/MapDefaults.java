@@ -4,7 +4,11 @@ public enum MapDefaults {
     NULL(0, '-'),
     FLOOR(1, '.'),
     DOOR(2, 'D'),
-    WALL(3, '#');
+    WALL(3, '#'),
+    PLAYER(4, 'P'),
+    SPAWNER(5, 'S'),
+    TRAP(6, 'T'),
+    SPECIAL(7, '*');
     
     private final int ID;
     private final char value;

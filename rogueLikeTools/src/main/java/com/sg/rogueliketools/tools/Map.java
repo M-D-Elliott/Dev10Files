@@ -65,35 +65,35 @@ public class Map {
                 if(points.length != 2){
                     throw new IncorrectDrawDimensionsException("A square is drawn from two points.");
                 }   
-                grid = shapeGen.drawSquare(character, points[0], points[1], grid);
+                shapeGen.drawSquare(character, points[0], points[1], grid);
                 break;
             case T:
             case TRIANGLE:
                 if(points.length != 3){
                     throw new IncorrectDrawDimensionsException("A triangle is drawn from three points.");
                 }   
-                grid = shapeGen.drawTriangle(character, points[0], points[1], points[2], grid);
+                shapeGen.drawTriangle(character, points[0], points[1], points[2], grid);
                 break;
             case D:
             case DIAMOND:
                 if(points.length != 4){
                     throw new IncorrectDrawDimensionsException("A diamond is drawn from four points.");
                 }   
-                grid = shapeGen.drawDiamond(character, points[0], points[1], points[2], points[3], grid);
+                shapeGen.drawDiamond(character, points[0], points[1], points[2], points[3], grid);
                 break;
             case C:
             case CIRCLE:
                 if(points.length != 1){
                     throw new IncorrectDrawDimensionsException("A circle is drawn from one point, and a radius sent as a point.");
                 }   
-                grid = shapeGen.drawCircle(character, points[0], points[1].x, grid);
+                shapeGen.drawCircle(character, points[0], points[1].x, grid);
                 break;
             case L:
             case LINE:
                 if(points.length != 2){
                     throw new IncorrectDrawDimensionsException("A line is drawn from two points.");
                 }   
-                grid = shapeGen.drawLine(character, points[0], points[1], grid);
+                shapeGen.drawLine(character, points[0], points[1], grid);
                 break;
             default:
                 throw new IncorrectDrawDimensionsException("Invalid shape.");

@@ -21,18 +21,20 @@ public class TestApp {
         level1.clear();
         
         try {
-            // Yo Corbin and Duncan! Thought I'd make a mapgen algo for the roguelike!
+            // Yo, Dev10! Thought I'd make a mapgen algo for the roguelike!
             // also this will not work (yet) if the second point comes after the first
             // in either dimension. (I believe).
             
             // drawing a square for testing!
             // this is the only shape that I have put in so far,
-            // but my first algorithm should work for all non-circular shapes
+            // but my first algorithm should work for all angular shapes
             // if used properly.
-            //( could use more validations, and point swapping).
-            level1.draw(ShapeType.S, new Point[]{new Point(0, 0), new Point(5, 5)});
+            //could use more validations, and point swapping).
+//            level1.draw(ShapeType.S, new Point[]{new Point(0, 0), new Point(5, 5)});
             // this targets the draw-line, which I will eventually put to private.
-            level1.draw(new Point[]{new Point(5, 5), new Point(9, 9)});
+//            level1.draw(new Point[]{new Point(0, 0), new Point(9, 5)});
+            level1.draw(new Point[]{new Point(5, 3), new Point(9, 5)});
+            level1.draw(new Point[]{new Point(2, 2), new Point(4, 9)});
             // made a Q in level1.txt. Check out it before altering!
             
         } catch (IncorrectDrawDimensionsException ex) {
