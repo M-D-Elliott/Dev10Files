@@ -16,6 +16,48 @@
           http://www.springframework.org/schema/aop  
           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
  
+
     <!-- Bean definitions go here -->
+    <!--All IOs-->
+    <bean id="userIO" class="com.sg.dentalclinic.ui.ConsoleIO" />
+    
+    <!--All Daos-->
+    <bean id="auditDao" class="com.sg.dentalclinic.service.audit.AuditDaoImpl" />
+    <bean id="appointmentDao" class="com.sg.dentalclinic.service.audit.AppointmentFileDao" />
+    <bean id="customerDao" class="com.sg.dentalclinic.service.audit.CustomerFileDao" />
+    <bean id="professionalDao" class="com.sg.dentalclinic.service.audit.ProfessionalFileDao" />
+    <bean id="userDao" class="com.sg.dentalclinic.service.audit.UserFileDao" />
+    
+    
+    
+<!--    <bean id="userIO" class="org.g10.lottery.ui.ConsoleIO"/>
+    
+    <bean id="view" class="org.g10.lottery.ui.View">
+        <constructor-arg ref="userIO"/>
+    </bean>
+    
+    <bean id = "customerDao" class="org.g10.lottery.data.CustomerFileDao">
+        <constructor-arg index ="0" type="java.lang.String" value="customers.txt">
+        </constructor-arg>
+    </bean>
+    <bean id = "ticketDao" class="org.g10.lottery.data.TicketFileDao">
+        <constructor-arg index ="0" type="java.lang.String" value="tickets.txt">
+        </constructor-arg>
+    </bean>
+    
+    <bean id="customerService" class="org.g10.lottery.service.CustomerService">
+        <constructor-arg ref="customerDao"/>
+    </bean>
+    <bean id="ticketService" class="org.g10.lottery.service.TicketServiceImpl">
+        <constructor-arg ref="customerDao"/>
+        <constructor-arg ref="ticketDao"/>
+    </bean>
+    
+    <bean id="controller" class="org.g10.lottery.ui.Controller">
+        <constructor-arg ref="view"/>
+        <constructor-arg ref="customerService"/>
+        <constructor-arg ref="ticketService"/>
+    </bean>
+   -->
    
 </beans>

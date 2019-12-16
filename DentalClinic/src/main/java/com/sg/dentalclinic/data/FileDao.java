@@ -12,7 +12,7 @@ import java.util.function.Function;
 
 public abstract class FileDao<T> {
 
-    private final String path;
+    protected final String path;
     private final int columnCount;
     private final boolean hasHeaders;
 

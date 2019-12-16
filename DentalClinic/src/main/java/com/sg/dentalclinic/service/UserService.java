@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sg.dentalclinic.service.audit;
+package com.sg.dentalclinic.service;
 
-
-public interface AuditDao {
-
-    void writeAuditEntry(String entry) throws DataPersistenceException;
-    
+/**
+ *
+ * @author Marcus
+ */
+public interface UserService {
+    public boolean getUser(int ID);
 }
