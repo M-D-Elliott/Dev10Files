@@ -56,8 +56,8 @@ public class TestablesTest {
     }
     
     @Test
-    public void testcanHazTable35() {
-        assertEquals(1, testables.canHazTable(3, 5));
+    public void testcanHazTable55() {
+        assertEquals(1, testables.canHazTable(5, 5));
     }
     
     @Test
@@ -92,17 +92,17 @@ public class TestablesTest {
     
     @Test
     public void testsameFirstLast123() {
-        assertFalse(testables.firstLast6(new int[]{1,2,3}));
+        assertFalse(testables.sameFirstLast(new int[]{1,2,3}));
     }
     
     @Test
     public void testsameFirstLast1231() {
-        assertTrue(testables.firstLast6(new int[]{1,2,3,1}));
+        assertTrue(testables.sameFirstLast(new int[]{1,2,3,1}));
     }
     
     @Test
     public void testsameFirstLast121() {
-        assertTrue(testables.firstLast6(new int[]{1,2,1}));
+        assertTrue(testables.sameFirstLast(new int[]{1,2,1}));
     }
     
     @Test

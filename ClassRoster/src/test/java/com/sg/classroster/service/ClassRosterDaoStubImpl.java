@@ -1,12 +1,12 @@
 package com.sg.classroster.service;
 
 import com.sg.classroster.dao.ClassRosterPersistenceException;
-import com.sg.classroster.dao.IClassRosterDao;
 import com.sg.classroster.dto.Student;
 import java.util.ArrayList;
 import java.util.List;
+import com.sg.classroster.dao.ClassRosterDao;
 
-public class ClassRosterDaoStubImpl implements IClassRosterDao {
+public class ClassRosterDaoStubImpl implements ClassRosterDao {
    
     private Student onlyStudent;
     private List<Student> studentList = new ArrayList<>();

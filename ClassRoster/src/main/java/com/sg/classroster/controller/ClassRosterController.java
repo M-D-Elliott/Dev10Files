@@ -6,15 +6,15 @@ import com.sg.classroster.ui.ClassRosterView;
 import java.util.List;
 import com.sg.classroster.service.ClassRosterDataValidationException;
 import com.sg.classroster.service.ClassRosterDuplicateIdException;
-import com.sg.classroster.service.IClassRosterServiceLayer;
+import com.sg.classroster.service.ClassRosterServiceLayer;
 
 public class ClassRosterController {
 
     ClassRosterView view;
     
-    private IClassRosterServiceLayer service;
+    private ClassRosterServiceLayer service;
 
-    public ClassRosterController(IClassRosterServiceLayer service, ClassRosterView view) {
+    public ClassRosterController(ClassRosterServiceLayer service, ClassRosterView view) {
         this.service = service;
         this.view = view;
     }

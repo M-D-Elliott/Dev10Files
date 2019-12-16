@@ -51,12 +51,12 @@ public class Testables {
     // canHazTable(5, 2) → 0
     // canHazTable(5, 5) → 1
     public int canHazTable(int yourStyle, int dateStyle) {
-        if(yourStyle >= 8 || dateStyle >= 8){
+        if(yourStyle <= 2 || dateStyle <= 2){
+            return 0;
+        }else if(yourStyle >= 8 || dateStyle >= 8){
             return 2;
-        } else if(yourStyle >= 2 || dateStyle >= 2){
-            return 1;
         }
-        return 0;
+        return 1;
     }
     
     // Given a String and a non-negative int n, we'll say that the 
@@ -83,7 +83,7 @@ public class Testables {
     public boolean firstLast6(int... numbers) {
         int length = numbers.length;
         if(length > 0){
-            return numbers[0] == 6 || numbers[length] == 6;
+            return numbers[0] == 6 || numbers[length - 1] == 6;
         }
         return false;
     }
@@ -97,7 +97,7 @@ public class Testables {
     public boolean sameFirstLast(int... numbers) {
         int length = numbers.length;
         if(length > 0){
-            return numbers[0] == numbers[length];
+            return numbers[0] == numbers[length - 1];
         }
         
         return false;

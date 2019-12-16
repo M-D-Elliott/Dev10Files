@@ -5,8 +5,6 @@
  */
 package com.sg.classroster.service;
 
-import com.sg.classroster.dao.IClassRosterAuditDao;
-import com.sg.classroster.dao.IClassRosterDao;
 import com.sg.classroster.dto.Student;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -17,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -24,14 +24,22 @@ import org.junit.jupiter.api.Test;
  */
 public class ClassRosterServiceLayerTest {
     
-    IClassRosterServiceLayer service;
+    ClassRosterServiceLayer service;
     
-    public ClassRosterServiceLayerTest() {
-        IClassRosterDao dao = new ClassRosterDaoStubImpl();
-        IClassRosterAuditDao auditDao = new ClassRosterAuditDaoStubImpl();
-   
-        service = new ClassRosterServiceLayer(dao, auditDao);
-    }
+public ClassRosterServiceLayerTest() {
+    // wire the Service Layer with stub implementations of the Dao and
+    // Audit Dao
+    // ClassRosterDao dao = new ClassRosterDaoStubImpl();
+    // ClassRosterAuditDao auditDao = 
+    //           new ClassRosterAuditDaoStubImpl();
+    //
+    // service = new ClassRosterServiceLayerImpl(dao, auditDao);
+ 
+    ApplicationContext ctx = 
+        new ClassPathXmlApplicationContext("applicationContext.xml");
+    service = 
+        ctx.getBean("serviceLayer", ClassRosterServiceLayer.class);
+}
     
     @BeforeAll
     public static void setUpClass() {

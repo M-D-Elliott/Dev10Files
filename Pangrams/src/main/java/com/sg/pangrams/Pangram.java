@@ -37,8 +37,9 @@ public class Pangram {
             put('Y', false);
             put('Z', false);
         }};
-        boolean isValid = potentialPangram.matches("[A-Za-z]+");
         potentialPangram = potentialPangram.toUpperCase();
+        
+        boolean isValid = potentialPangram.matches("[A-Za-z]+");
         if(isValid){
             char[] chars = potentialPangram.toCharArray();
             int totalTrues = 0;
@@ -50,7 +51,6 @@ public class Pangram {
             }
             return totalTrues == 26;
         }
-
         return false;
     }
 }

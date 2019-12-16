@@ -6,15 +6,14 @@
 package com.sg.classroster.dao;
 
 import com.sg.classroster.dto.Student;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.junit.jupiter.api.AfterEach;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -23,39 +22,22 @@ import org.junit.jupiter.api.Test;
  */
 public class ClassRosterDaoTest {
     
-    List<Student> savedList;
+    private final static String TEST_FILE = "roster-test.txt";
     
-    IClassRosterDao dao = new ClassRosterDao();
+    ClassRosterDao dao = new ClassRosterDaoFileImpl(TEST_FILE);
     
     public ClassRosterDaoTest() {
     }
     
     @BeforeAll
-    public static void setUpClass() {
+    public static void setup() throws IOException {
+        Files.copy(Paths.get("roster-seed.txt"),
+                Paths.get(TEST_FILE),
+                StandardCopyOption.REPLACE_EXISTING);
     }
     
     @AfterAll
     public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() throws Exception {
-        List<Student> studentList = dao.getAllStudents();
-        savedList = dao.getAllStudents();
-        for (Student student : studentList) {
-            dao.removeStudent(student.getStudentId());
-        }
-    }
-    
-    @AfterEach
-    public void tearDown()  {
-        for (Student student : savedList) {
-            try {
-                dao.addStudent(student.getStudentId(), student);
-            } catch (ClassRosterPersistenceException ex) {
-                Logger.getLogger(ClassRosterDaoTest.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }
 
     
@@ -89,7 +71,7 @@ public class ClassRosterDaoTest {
 
         dao.addStudent(student2.getStudentId(), student2);
 
-        assertEquals(2, dao.getAllStudents().size());
+        assertEquals(3, dao.getAllStudents().size());
 
     }
     
@@ -110,11 +92,11 @@ public class ClassRosterDaoTest {
         dao.addStudent(student2.getStudentId(), student2);
 
         dao.removeStudent(student1.getStudentId());
-        assertEquals(1, dao.getAllStudents().size());
+        assertEquals(2, dao.getAllStudents().size());
         assertNull(dao.getStudent(student1.getStudentId()));
 
         dao.removeStudent(student2.getStudentId());
-        assertEquals(0, dao.getAllStudents().size());
+        assertEquals(1, dao.getAllStudents().size());
         assertNull(dao.getStudent(student2.getStudentId()));
 
     }
