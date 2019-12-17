@@ -5,17 +5,21 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Appointment extends DBObject  {
-
-    private int customerID;
-    private int professionalID;
-    private List<Integer> modifiedByIDs;
-    
     private LocalDate startTime;
     private LocalDate endTime;
 
     private BigDecimal costToCustomer;
-    
     private String notes;
+    
+    // To store reference values to other DB objects
+    private int customerID;
+    private int professionalID;
+    private List<Integer> modifiedByIDs;
+    
+    // to store temporary references to other DB objects.
+    private Customer customer;
+    private Professional professional;
+    private List<User> modifiedBy;
 
     public Appointment(int ID, int customerID, int professionalID, LocalDate startTime, LocalDate endTime) {
         super(ID);
@@ -25,6 +29,8 @@ public class Appointment extends DBObject  {
         this.endTime = endTime;
     }
 
+    
+    // getters and setters
     public int getCustomerID() {
         return customerID;
     }
@@ -79,5 +85,31 @@ public class Appointment extends DBObject  {
 
     public void setModifiedByIDs(List<Integer> modifiedByIDs) {
         this.modifiedByIDs = modifiedByIDs;
+    }
+
+    
+    // for temporary DB objects.
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Professional getProfessional() {
+        return professional;
+    }
+
+    public void setProfessional(Professional professional) {
+        this.professional = professional;
+    }
+
+    public List<User> getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(List<User> modifiedBy) {
+        this.modifiedBy = modifiedBy;
     }
 }

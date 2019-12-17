@@ -12,7 +12,9 @@ public class AppointmentFileDao
     
     public AppointmentFileDao(String path) {
         super(path, 5, false);
-
+        
+        LocalDate now = LocalDate.now();
+        this.path = path + now + ".txt";
     }
     
     @Override

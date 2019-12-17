@@ -5,10 +5,9 @@
  */
 package com.sg.dentalclinic.service;
 
-/**
- *
- * @author Marcus
- */
-public interface ProfessionalService {
-    public boolean getProfessional(int ID);
+import com.sg.dentalclinic.models.Appointment;
+
+
+public interface FullService {
+    public boolean makeAppointment(Appointment appoitment);
 }

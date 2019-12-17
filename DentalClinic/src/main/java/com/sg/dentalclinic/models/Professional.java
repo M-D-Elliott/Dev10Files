@@ -3,8 +3,8 @@ package com.sg.dentalclinic.models;
 import java.math.BigDecimal;
 
 public class Professional extends Person {
-    public Specialty specialty;
-    public BigDecimal hourlyRate;
+    private Specialty specialty;
+    private BigDecimal hourlyRate;
 
     public Professional(int ID, String firstName, String lastName) {
         super(ID, firstName, lastName);

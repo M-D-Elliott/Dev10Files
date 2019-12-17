@@ -1,4 +1,4 @@
-package com.sg.dentalclinic.ui;
+package com.sg.charactergen.ui;
 
 import java.io.IOException;
 import java.util.Scanner;
