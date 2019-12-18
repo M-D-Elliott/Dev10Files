@@ -6,6 +6,8 @@
 package com.sg.dentalclinic.ui;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public interface UserIO {
@@ -27,10 +29,14 @@ public interface UserIO {
 
     int readInt(String prompt);
 
+    int tryParseInt(String string);
+    
     int readInt(String prompt, int min, int max);
 
     String readRequiredString(String prompt);
 
     String readString(String prompt);
+
+    public LocalDate readRequiredDate(String prompt, DateTimeFormatter BASIC_ISO_DATE);
     
 }

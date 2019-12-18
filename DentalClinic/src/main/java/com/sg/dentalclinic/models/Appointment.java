@@ -2,18 +2,22 @@ package com.sg.dentalclinic.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class Appointment extends DBObject  {
-    private LocalDate startTime;
-    private LocalDate endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
+    private LocalDate date;
 
     private BigDecimal costToCustomer;
     private String notes;
     
     // To store reference values to other DB objects
     private int customerID;
-    private int professionalID;
+    private String professionalLastName;
+    private Specialty professionalSpecialty;
+    
     private List<Integer> modifiedByIDs;
     
     // to store temporary references to other DB objects.
@@ -21,44 +25,61 @@ public class Appointment extends DBObject  {
     private Professional professional;
     private List<User> modifiedBy;
 
-    public Appointment(int ID, int customerID, int professionalID, LocalDate startTime, LocalDate endTime) {
-        super(ID);
-        this.customerID = customerID;
-        this.professionalID = professionalID;
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public Appointment(int customerID, 
+            String professionalLastName, 
+            Specialty professionalSpecialty, 
+            LocalTime startTime, 
+            LocalTime endTime, 
+            BigDecimal costToCustomer, 
+            String notes,
+            LocalDate date){
+        
+            this.customerID = customerID;
+            this.professionalLastName = professionalLastName;
+            this.professionalSpecialty = professionalSpecialty;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.costToCustomer = costToCustomer;
+            this.notes = notes;
+            this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return customer + " will see " + professional + " on " + date + " from " + startTime + " to " + endTime + ", notes: " + notes;
+    }
     
+    
+
     // getters and setters
     public int getCustomerID() {
         return customerID;
     }
 
-    public int getProfessionalID() {
-        return professionalID;
-    }
+//    public int getProfessionalID() {
+//        return professionalID;
+//    }
+//
+//    public void setProfessionalID(int professionalID) {
+//        this.professionalID = professionalID;
+//    }
 
-    public void setProfessionalID(int professionalID) {
-        this.professionalID = professionalID;
-    }
-
-    public LocalDate getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDate startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDate getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDate endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
-
+    
     public BigDecimal getCostToCustomer() {
         return costToCustomer;
     }
@@ -111,5 +132,29 @@ public class Appointment extends DBObject  {
 
     public void setModifiedBy(List<User> modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getProfessionalLastName() {
+        return professionalLastName;
+    }
+
+    public void setProfessionalLastName(String professionalLastName) {
+        this.professionalLastName = professionalLastName;
+    }
+
+    public Specialty getProfessionalSpecialty() {
+        return professionalSpecialty;
+    }
+
+    public void setProfessionalSpecialty(Specialty professionalSpecialty) {
+        this.professionalSpecialty = professionalSpecialty;
     }
 }

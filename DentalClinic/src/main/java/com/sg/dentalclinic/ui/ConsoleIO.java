@@ -1,6 +1,9 @@
 package com.sg.dentalclinic.ui;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class ConsoleIO implements UserIO {
@@ -82,6 +85,16 @@ public class ConsoleIO implements UserIO {
             print(String.format(NUMBER_OUT_OF_RANGE, min, max));
         }
     }
+    
+    @Override
+    public int tryParseInt(String string){
+        try{
+            return Integer.parseInt(string);
+        } catch(NumberFormatException e){
+            
+        }
+        return 0;
+    }
 
     @Override
     public boolean readBoolean(String prompt) {
@@ -112,5 +125,21 @@ public class ConsoleIO implements UserIO {
     @Override
     public void CLS() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    }
+
+    @Override
+    public LocalDate readRequiredDate(String prompt, DateTimeFormatter formatter) {
+        String input = readRequiredString(prompt);
+        input = input.replace("-", "");
+        input = input.replace("/", "");
+        
+        LocalDate returnDate = null;
+        
+        try{
+            returnDate = LocalDate.parse(input, formatter);
+        } catch(DateTimeParseException ex){
+            print("Bad date entry");
+        }
+        return returnDate;
     }
 }

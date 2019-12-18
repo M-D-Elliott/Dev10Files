@@ -6,6 +6,10 @@
 package com.sg.dentalclinic.data;
 
 import com.sg.dentalclinic.models.Appointment;
+import com.sg.dentalclinic.models.Customer;
+import com.sg.dentalclinic.models.Professional;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -13,4 +17,9 @@ import com.sg.dentalclinic.models.Appointment;
  */
 public interface AppointmentDao extends Dao<Appointment>{
     
+    public String getPath();
+
+    public String getDate();
+    
+    public void setDate(String dateString);
 }

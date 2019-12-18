@@ -12,7 +12,7 @@ public class ProfessionalFileDao
         implements ProfessionalDao {
 
     public ProfessionalFileDao(String path) {
-        super(path, 5, false);
+        super(path, 5, true);
 
     }
     
@@ -68,7 +68,7 @@ public class ProfessionalFileDao
     }
     
     private String mapToString(Professional professional) {
-        return String.format("%s,%s,%s,%s, %s",
+        return String.format("%s,%s,%s,%s,%s",
                 professional.getID(),
                 professional.getFirstName(),
                 professional.getLastName(),
@@ -82,7 +82,7 @@ public class ProfessionalFileDao
                 Integer.parseInt(tokens[0]),
                 tokens[1],
                 tokens[2],
-                Specialty.parseSpecialty(tokens[3]),
+                Specialty.fromName(tokens[3]),
                 new BigDecimal(tokens[4])
         );
     }

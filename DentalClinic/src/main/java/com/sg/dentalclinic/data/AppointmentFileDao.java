@@ -1,7 +1,12 @@
 package com.sg.dentalclinic.data;
 
 import com.sg.dentalclinic.models.Appointment;
+import com.sg.dentalclinic.models.Customer;
+import com.sg.dentalclinic.models.Professional;
+import com.sg.dentalclinic.models.Specialty;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,11 +15,10 @@ public class AppointmentFileDao
         extends FileDao<Appointment>
         implements AppointmentDao {
     
+    private String dateString = "";
+    
     public AppointmentFileDao(String path) {
-        super(path, 5, false);
-        
-        LocalDate now = LocalDate.now();
-        this.path = path + now + ".txt";
+        super(path, 7, true);
     }
     
     @Override
@@ -69,22 +73,44 @@ public class AppointmentFileDao
     }
     
     private String mapToString(Appointment appointment) {
-        return String.format("%s,%s,%s,%s, %s",
-                appointment.getID(),
+        return String.format("%s,%s,%s,%s,%s,%s,%s",
                 appointment.getCustomerID(),
-                appointment.getProfessionalID(),
+                appointment.getProfessionalLastName(),
+                appointment.getProfessionalSpecialty().getName(),
                 appointment.getStartTime(),
-                appointment.getEndTime()
+                appointment.getEndTime(),
+                appointment.getCostToCustomer(),
+                appointment.getNotes()
         );
     }
 
     private Appointment mapToAppointment(String[] tokens) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH.mm");
         return new Appointment(
                 Integer.parseInt(tokens[0]),
-                Integer.parseInt(tokens[1]),
-                Integer.parseInt(tokens[2]),
-                LocalDate.parse(tokens[3]),
-                LocalDate.parse(tokens[4])
+                tokens[1],
+                Specialty.fromName(tokens[2]),
+                LocalTime.parse(tokens[3]),
+                LocalTime.parse(tokens[4]),
+                new BigDecimal(tokens[5]),
+                tokens[6],
+                LocalDate.parse(this.dateString)
         );
+    }
+
+    @Override
+    public String getPath() {
+        return path;
+    }
+
+    @Override
+    public String getDate() {
+        return dateString;
+    }
+
+    @Override
+    public void setDate(String dateString) {
+        this.dateString = dateString;
+        this.path = "database/appointments_" + dateString.replace("-", "") + ".txt";
     }
 }

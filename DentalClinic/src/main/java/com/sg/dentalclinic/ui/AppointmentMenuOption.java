@@ -3,8 +3,8 @@ package com.sg.dentalclinic.ui;
 public enum AppointmentMenuOption {
 
     RETURN(0, "Return"),
-    VIEW_BY_DAY_AND_DENTIST(1, "View appointments by day and Professional"),
-    VIEW_BY_DAY_AND_CUSTOMER(2, "View appointments by day and Customer"),
+    SEARCH_BY_DAY_AND_DENTIST(1, "Search appointments by day and Professional"),
+    SEARCH_BY_DAY_AND_CUSTOMER(2, "Search appointments by day and Customer"),
     UPDATE_APPOINTMENT(3, "Update existing appointment"),
     CANCEL_APPOINTMENT(4, "Cancel existing appointment");
 

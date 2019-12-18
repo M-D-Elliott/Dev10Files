@@ -1,22 +1,26 @@
 package com.sg.dentalclinic.ui;
 
+import com.sg.dentalclinic.models.Appointment;
+import com.sg.dentalclinic.models.Customer;
 import com.sg.dentalclinic.models.Professional;
+import com.sg.dentalclinic.models.Specialty;
 import com.sg.dentalclinic.service.FullService;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Controller {
 
     // * * * * * * * * * * * INITIALIZATION * * * * * * * * * * * * 
     
-    private FullService fullservice;
+    private FullService service;
     
     private View view;
 
     public Controller() {
     }
     
-    public Controller(FullService fullservice, View view) {
-        this.fullservice = fullservice;
+    public Controller(FullService service, View view) {
+        this.service = service;
         this.view = view;
     }
     
@@ -61,10 +65,10 @@ public class Controller {
             switch (selection) {
                 case RETURN:
                     break;
-                case VIEW_BY_DAY_AND_DENTIST:
-                    searchAppointmentsByDayAndDentist();
+                case SEARCH_BY_DAY_AND_DENTIST:
+                    searchAppointmentsByDayAndProfessional();
                     break;
-                case VIEW_BY_DAY_AND_CUSTOMER:
+                case SEARCH_BY_DAY_AND_CUSTOMER:
                     searchAppointmentsByDayAndCustomer();
                     break;
                 case UPDATE_APPOINTMENT:
@@ -139,30 +143,55 @@ public class Controller {
 
     // * * * * * * * * * * * SERVICE FUNCTIONS * * * * * * * * * * * * 
     
-    private void searchAppointmentsByDayAndDentist() {
-//        view.print("search day dentist");
-//        LocalDate date = view.readDate();
-//        Professional professional = view.readProfessional();
+    private void searchAppointmentsByDayAndProfessional() {
+        view.searchAppointmentsByDayAndProfessionalBanner();
+        LocalDate date = view.readDate();
+        
+        if(date != null) {
+            List<Professional> professionals = service.getAllProfessionals();
+        
+            Professional professional = view.listAndReadProfessional(professionals); 
+            List<Appointment> appointments = service.searchAppointments(date, professional);
+            view.displayObjects(appointments);
+        }
+
     }
 
     private void searchAppointmentsByDayAndCustomer() {
-        view.print("search day customer");
+        view.searchAppointmentsByDayAndCustomerBanner();
+        LocalDate date = view.readDate();
+        
+        if(date != null){
+            List<Customer> customers = service.getAllCustomers();
+        
+            Customer customer = view.listAndReadCustomer(customers);
+            List<Appointment> appointments = service.searchAppointments(date, customer);
+            view.displayObjects(appointments);
+        }
+    }
+    
+    private void addCustomer() {
+        view.addNewCustomerBanner();
+        Customer customer = view.createNewCustomer();
+        
+        service.addCustomer(customer);
+    }
+    
+    private void scheduleAppointment() {
+//        view.scheduleNewAppointmentBanner();
+//        Customer customer = view.getOrAddCustomer();
+//        LocalDate date = view.readDate();
+//        Specialty specialty = view.readSpecialty();
+//        List<Professional> professionalsAvailable = service.searchAppointments(date, customer, specialty);
     }
 
     private void updateAppointment() {
-        view.print("update apt");
+//        view.updateAppointmentBanner();
+        
     }
 
     private void cancelAppointment() {
         view.print("cancel apt");
-    }
-
-    private void addCustomer() {
-        view.print("add cust");
-    }
-
-    private void scheduleAppointment() {
-        view.print("schedule apt");
     }
 
     private void viewProfessionalsAppointments() {

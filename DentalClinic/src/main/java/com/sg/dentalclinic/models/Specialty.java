@@ -1,68 +1,45 @@
 package com.sg.dentalclinic.models;
 
 public enum Specialty {
-    DENTIST,
-    HYGENIST,
-    ORTHODONTIST,
-    ORAL_SURGEON,
-    NULL;
+    NULL(0, "NULL"),
+    DENTIST(1, "Dentist"),
+    HYGIENIST(2, "Hygienist"),
+    ORTHODONTIST(3, "Orthodontist"),
+    ORAL_SURGEON(4, "Oral_Surgeon");
     
     
-    public static Specialty parseSpecialty(String string){
-        Specialty ret;
-        switch(string){
-            case "dentist":
-            case "Dentist":
-            case "DENTIST":
-                ret = Specialty.DENTIST;
-                break;
-            case "hygenist":
-            case "Hygenist":
-            case "HYGENIST":
-                ret = Specialty.HYGENIST;
-                break;
-            case "orthodontist":
-            case "Orthodontist":
-            case "ORTHODONTIST":
-                ret = Specialty.ORTHODONTIST;
-                break;
-            case "oral surgeon":
-            case "Oral Surgeon":
-            case "ORAL SURGEON":
-            case "oral_surgeon":
-            case "Oral_Surgeon":
-            case "ORAL_SURGEON":
-                ret = Specialty.ORAL_SURGEON;
-                break;
-            default:
-                ret = Specialty.NULL;
-                break;
-        }
-        return ret;
+    private final int value;
+    private final String name;
+
+    private Specialty(int value, String name) {
+        this.value = value;
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        String ret;
-        switch(this){
-            case DENTIST:
-                ret = "dentist";
-                break;
-            case HYGENIST:
-                ret = "hygenist";
-                break;
-            case ORTHODONTIST:
-                ret = "orthodontist";
-                break;
-            case ORAL_SURGEON:
-                ret = "oral_surgeon";
-                break;
-            default:
-                ret = "NULL";
-                break;
+    public int getValue() {
+        return value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static Specialty fromValue(int value) {
+        for (Specialty mmo : Specialty.values()) {
+            if (mmo.getValue() == value) {
+                return mmo;
+            }
         }
-        return ret;
+        return NULL;
     }
     
+    public static Specialty fromName(String name) {
+        for (Specialty mmo : Specialty.values()) {
+            if (mmo.getName().equalsIgnoreCase(name)) {
+                return mmo;
+            }
+        }
+        return NULL;
+    }
     
 }

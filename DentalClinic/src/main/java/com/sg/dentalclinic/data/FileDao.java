@@ -17,7 +17,7 @@ public abstract class FileDao<T> {
     private final boolean hasHeaders;
 
     public FileDao(String path, int columnCount, boolean hasHeaders) {
-        this.path = path;
+        this.path = "database/" + path;
         this.columnCount = columnCount;
         this.hasHeaders = hasHeaders;
     }

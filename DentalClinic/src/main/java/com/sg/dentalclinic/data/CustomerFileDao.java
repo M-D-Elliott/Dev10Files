@@ -2,6 +2,7 @@ package com.sg.dentalclinic.data;
 
 import com.sg.dentalclinic.models.Customer;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,8 +12,7 @@ public class CustomerFileDao
         implements CustomerDao {
 
     public CustomerFileDao(String path) {
-        super(path, 4, false);
-
+        super(path, 4, true);
     }
     
     @Override
@@ -76,11 +76,12 @@ public class CustomerFileDao
     }
 
     private Customer mapToCustomer(String[] tokens) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         return new Customer(
                 Integer.parseInt(tokens[0]),
                 tokens[1],
                 tokens[2],
-                LocalDate.parse(tokens[3])
+                LocalDate.parse(tokens[3], formatter)
         );
     }
 }

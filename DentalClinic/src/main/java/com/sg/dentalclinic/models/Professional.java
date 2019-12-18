@@ -6,8 +6,8 @@ public class Professional extends Person {
     private Specialty specialty;
     private BigDecimal hourlyRate;
 
-    public Professional(int ID, String firstName, String lastName) {
-        super(ID, firstName, lastName);
+    public Professional() {
+        super();
     }
     
     public Professional(int ID, String firstName, String lastName, Specialty specialty, BigDecimal hourlyRate) {
@@ -15,6 +15,13 @@ public class Professional extends Person {
         this.specialty = specialty;
         this.hourlyRate = hourlyRate;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " -- " + getSpecialty().getName();
+    }
+    
+    
 
     public Specialty getSpecialty() {
         return specialty;
