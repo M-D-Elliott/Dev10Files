@@ -1,8 +1,8 @@
 package com.sg.rogueliketools;
 
-import com.sg.rogueliketools.tools.IncorrectDrawDimensionsException;
-import com.sg.rogueliketools.tools.Map;
-import com.sg.rogueliketools.tools.ShapeType;
+import com.sg.rogueliketools.map.IncorrectDrawDimensionsException;
+import com.sg.rogueliketools.map.Map;
+import com.sg.rogueliketools.map.ShapeType;
 import java.awt.Point;
 
 public class TestApp {
