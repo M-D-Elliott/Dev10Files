@@ -39,7 +39,6 @@ public class App {
         inner2.add('_');
         outer.add(inner2);
         List<Character> inner3 = new ArrayList<Character>();
-        outer.add(inner1);
         inner3.add('#');
         inner3.add('_');
         inner3.add('#');
@@ -54,6 +53,21 @@ public class App {
         inner3.add('_');
         inner3.add('_');
         outer.add(inner3);
+        List<Character> inner4 = new ArrayList<Character>();
+        inner4.add('A');
+        inner4.add('D');
+        inner4.add('C');
+        inner4.add('C');
+        inner4.add('C');
+        inner4.add('C');
+        inner4.add('C');
+        inner4.add('D');
+        inner4.add('C');
+        inner4.add('C');
+        inner4.add('C');
+        inner4.add('D');
+        inner4.add('D');
+        outer.add(inner4);
         CompressionSort sorter = new CompressionSort();
         
         List<Holder> holderArray = sorter.compress(outer);

@@ -1,10 +1,8 @@
 package algo;
 
-import static java.nio.file.Files.lines;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class CompressionSort {
     public List<Holder> compress(List<List<Character>> holders){
@@ -17,7 +15,7 @@ public class CompressionSort {
                     compressed.add(new Holder(character, 1));
                 } else {
                     Holder currHolder = compressed.get(index);
-                    if(currHolder.getValue() == character){
+                    if(Objects.equals(currHolder.getValue(), character)){
                         currHolder.setCount(currHolder.getCount() + 1);
                     } else {
                         index++;

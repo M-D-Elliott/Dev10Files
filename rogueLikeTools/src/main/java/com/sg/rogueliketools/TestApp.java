@@ -33,7 +33,7 @@ public class TestApp {
 //            level1.draw(ShapeType.S, new Point[]{new Point(0, 0), new Point(5, 5)});
             // this targets the draw-line, which I will eventually put to private.
 //            level1.draw(new Point[]{new Point(0, 0), new Point(9, 5)});
-            level1.draw(new Point[]{new Point(5, 3), new Point(9, 5)});
+            level1.draw(new Point[]{new Point(0, 0), new Point(9, 5)});
             level1.draw(new Point[]{new Point(2, 2), new Point(4, 9)});
             // made a Q in level1.txt. Check out it before altering!
             
