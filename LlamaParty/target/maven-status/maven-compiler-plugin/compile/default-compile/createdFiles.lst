@@ -1,0 +1,4 @@
+com\sg\llamaparty\App.class
+com\sg\llamaparty\objects\RSVP.class
+com\sg\llamaparty\controllers\PartyController.class
+com\sg\llamaparty\objects\Party.class

@@ -1,0 +1,40 @@
+
+// generic ajax, all params are js kwargs, which are a little ethereal.
+// they are not initially kwargs, but the == undefined and == null check ensures
+// standard values.
+function sendAjaxRequest(url, form, dataType, successCallBack, errorCallBack, type) {
+    if (type == undefined || type == null) {
+        type = "POST";
+    }
+    if (dataType == undefined || dataType == null) {
+        dataType = "json";
+    }
+    if (successCallBack == undefined || successCallBack == null) {
+        successCallBack = function (res) { }
+    }
+    if (errorCallBack == undefined || errorCallBack == null) {
+
+		errorCallBack = function (ts) { console.log(ts.error); };
+    }
+    const data = form == null ? null : form.serialize();
+    $.ajax({
+        type: type,
+        url: url,
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        dataType: dataType,
+        success: function (res) { successCallBack(res, form); },
+        error: function (ts) { errorCallBack(ts, form); }
+    });
+}
+
+// **********basic way to call:**********
+const form = profileComments.children("#comments-body").children('.LoadCommentsForm');
+//specify relative url:
+const url = "/Comment/More";
+// define a success callback
+const successCallBack = function (res, form) { buildAndPlaceMoreComments(res, form) };
+// define an error callback
+const errorCallBack = function (ts) { console.log(ts) };
+//call the generic:
+sendAjaxRequest(url, form, "html", successCallBack, errorCallBack, null);

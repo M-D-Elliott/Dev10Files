@@ -1,0 +1,7 @@
+#wrapper{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+}
